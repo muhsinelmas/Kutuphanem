@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kutuphanem.Views.Detaylar"
+             Title="Detaylar"
+             BackgroundColor="#43aa8b">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+
+                <Label Text="Kitap Adı:" x:Name="LblAd1" TextColor="Black"/>
+                <Label Text="Deneme" x:Name="LblAd" LineBreakMode="CharacterWrap" Grid.Row="0" Grid.Column="1"></Label>
+                
+                <Label Text="Yazar:" x:Name="LblYazar1" TextColor="Black" Grid.Row="1" Grid.Column="0"></Label>
+                <Label Text="Deneme" x:Name="LblYazar" LineBreakMode="CharacterWrap" Grid.Row="1" Grid.Column="1"></Label>
+                
+                <Label Text="Yayınevi:" x:Name="LblYayinEvi1" TextColor="Black" Grid.Row="2" Grid.Column="0"></Label>
+                <Label Text="Deneme" x:Name="LblYayinEvi" LineBreakMode="CharacterWrap" Grid.Row="2" Grid.Column="1"></Label>
+                
+                <Label Text="Kitap Türü:" x:Name="LblTur1" TextColor="Black" Grid.Row="3" Grid.Column="0"></Label>
+                <Label Text="Deneme" x:Name="LblTur" LineBreakMode="CharacterWrap" Grid.Row="3" Grid.Column="1"></Label>
+                
+                <Label Text="Sayfa:" x:Name="LblSayfa1" TextColor="Black" Grid.Row="4" Grid.Column="0"></Label>
+                <Label Text="Deneme"  x:Name="LblSayfa" LineBreakMode="CharacterWrap" Grid.Row="4" Grid.Column="1"></Label>
+                
+                <CheckBox x:Name="Okundu" IsEnabled="False" Grid.Row="5" Grid.Column="0"></CheckBox>
+                <Label x:Name="LblOkundu" Text="Deneme" Grid.Row="5" Grid.Column="1" VerticalOptions="Center"></Label>
+
+                <CheckBox x:Name="ChkVar" IsEnabled="False" Grid.Row="6" Grid.Column="0"></CheckBox>
+                <Label x:Name="LblVar" Text="Deneme" Grid.Row="6" Grid.Column="1" VerticalOptions="Center"></Label>
+
+                <Label Text="Eklenme Tarihi:" x:Name="Tarih1" TextColor="Black" Grid.Row="7" Grid.Column="0" VerticalOptions="Center"/>
+                <DatePicker x:Name="Tarih" Grid.Row="7" Grid.Column="1"></DatePicker>
+                
+                <Label Text="Not:" x:Name="LblNot1" TextColor="Black" Grid.Row="8" Grid.Column="0"></Label>
+                <Label Text="Deneme" x:Name="LblNot" LineBreakMode="CharacterWrap" Grid.Row="8" Grid.Column="1"></Label>
+
+                <Button Text="Düzenle" Grid.Row="9" Grid.ColumnSpan="2" Grid.Column="0" CornerRadius="15" BackgroundColor="#e9ecef" BorderWidth="1" BorderColor="Silver" HorizontalOptions="CenterAndExpand" WidthRequest="200" Clicked="Button_Clicked"/>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kutuphanem.Views.GirisYap"
+             BackgroundColor="#43aa8b"
+             xmlns:controls="clr-namespace:Kutuphanem.CustomControls">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="Margin" Value="0,5,0,0"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#1985a1"/>
+            </Style>
+
+            <Style TargetType="controls:CustomEntry">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="3"/>
+                <Setter Property="IsSpellCheckEnabled" Value="False"/>
+                <Setter Property="IsTextPredictionEnabled" Value="False"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="CenterAndExpand">
+            <ScrollView x:Name="ScrView" VerticalScrollBarVisibility="Never" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Margin="30,40,30,40">
+                    <StackLayout x:Name="BeniHatirlaButon" Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout x:Name="Stk1" Spacing="0" Orientation="Vertical" IsVisible="{Binding BeniHatirla}">
+                            <Button x:Name="BhButon1" WidthRequest="40" HeightRequest="40" CornerRadius="20" FontSize="10" HorizontalOptions="Center" Clicked="BHButon1_Clicked"/>
+                            <Label x:Name="LblButon1" Text="{Binding UserName}" HorizontalOptions="Center" FontSize="10" TextColor="Black"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="Stk2" Spacing="0" Orientation="Vertical" IsVisible="{Binding BeniHatirla}">
+                            <Button x:Name="BhButon2" WidthRequest="40" HeightRequest="40" CornerRadius="20" FontSize="10" HorizontalOptions="Center" Clicked="BHButon2_Clicked"/>
+                            <Label x:Name="LblButon2" Text="{Binding UserName}" HorizontalOptions="Center" FontSize="10" TextColor="Black"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="Stk3" Spacing="0" Orientation="Vertical" IsVisible="{Binding BeniHatirla}">
+                            <Button x:Name="BhButon3" WidthRequest="40" HeightRequest="40" CornerRadius="20" FontSize="10" HorizontalOptions="Center" Clicked="BHButon3_Clicked"/>
+                            <Label x:Name="LblButon3" Text="{Binding UserName}" HorizontalOptions="Center" FontSize="10" TextColor="Black"/>
+                        </StackLayout>
+
+                        <StackLayout x:Name="Stk4" Spacing="0" Orientation="Vertical" IsVisible="{Binding BeniHatirla}">
+                            <Button x:Name="BhButon4" WidthRequest="40" HeightRequest="40" CornerRadius="20" FontSize="10" HorizontalOptions="Center" Clicked="BHButon4_Clicked"/>
+                            <Label x:Name="LblButon4" Text="{Binding UserName}" HorizontalOptions="Center" FontSize="10" TextColor="Black"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Grid x:Name="GrdGiris">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame BackgroundColor="White" CornerRadius="20" HeightRequest="260" Grid.ColumnSpan="3" Opacity=".1" HasShadow="True"/>
+                        <StackLayout Grid.Column="1" Spacing="1">
+                            <Label Text="Kullanıcı Adı" TextColor="Black" Margin="10,5,0,0"/>
+                            <controls:CustomEntry x:Name="TxtKullaniciAdi" ReturnType="Next" Placeholder="Kullanıcı adı"/>
+                            <Label Text="Şifre" TextColor="Black" Margin="10,5,0,0"/>
+                            <AbsoluteLayout>
+                                <controls:CustomEntry x:Name="TxtSifre" ReturnType="Done" IsPassword="True" Placeholder="Şifre" AbsoluteLayout.LayoutBounds="0,0,1,48" AbsoluteLayout.LayoutFlags="WidthProportional" TextChanged="txtSifre_TextChanged"/>
+                                <ImageButton x:Name="ImgSifre" Source="showPassword" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds=".97,13,22,22" AbsoluteLayout.LayoutFlags="XProportional" Clicked="imgSifre_Clicked" IsVisible="False"/>
+                            </AbsoluteLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="ChkBeniHatirla"/>
+                                <Label Text="Beni Hatırla" TextColor="Black" VerticalOptions="Center" TranslationX="-5" HorizontalOptions="StartAndExpand"/>
+                                <Label x:Name="LblSifremiUnuttum" Text="Şifremi Unuttum" TextColor="Black" VerticalOptions="Center" TextDecorations="Underline"/>
+                            </StackLayout>
+
+                            <Button x:Name="BtnGirisYap" Text="Giriş Yap" Clicked="btnGirisYap_Clicked"/>
+                            <Button x:Name="BtnKaydol" Text="Kaydol" Clicked="btnKaydol_Clicked"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid x:Name="GrdKayit" IsVisible="false" Opacity="0" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame BackgroundColor="White" CornerRadius="20" HeightRequest="310" Grid.ColumnSpan="3" Opacity=".1" HasShadow="True"/>
+                        <StackLayout Grid.Column="1" Spacing="1">
+                            <Label Text="Adınız" TextColor="Black" Margin="10,5,0,0"/>
+                            <controls:CustomEntry x:Name="TxtAd" ReturnType="Next" Placeholder="Adınız">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </controls:CustomEntry>
+                            <Label Text="Soyadınız" TextColor="Black" Margin="10,5,0,0"/>
+                            <controls:CustomEntry x:Name="TxtSoyad" ReturnType="Next" Placeholder="Soyadınız">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </controls:CustomEntry>
+                            <Label Text="Kullanıcı Adı" TextColor="Black" Margin="10,5,0,0"/>
+                            <controls:CustomEntry x:Name="TxtKullaniciAdi1" ReturnType="Next" Placeholder="Kullanıcı adı"/>
+                            <Label Text="Şifre" TextColor="Black" Margin="10,5,0,0"/>
+                            <AbsoluteLayout>
+                                <controls:CustomEntry x:Name="TxtSifre1" ReturnType="Next" IsPassword="True" Placeholder="Şifre" AbsoluteLayout.LayoutBounds="0,0,1,48" AbsoluteLayout.LayoutFlags="WidthProportional" TextChanged="txtSifre1_TextChanged"/>
+                                <ImageButton x:Name="ImgSifre1" Source="showPassword" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds=".97,13,22,22" AbsoluteLayout.LayoutFlags="XProportional" Clicked="imgSifre1_Clicked" IsVisible="False"/>
+                            </AbsoluteLayout>
+                            <Label x:Name="LblGSorusu" Text="Güvenlik Sorusu*" TextColor="Black" Margin="10,5,0,0"/>
+                            <Picker x:Name="PkrGSorusu">
+                                <Picker.Items>
+                                    <x:String>En sevdiğim kitap</x:String>
+                                    <x:String>En sevdiğim öğretmenim</x:String>
+                                    <x:String>İlk okulumun adı</x:String>
+                                    <x:String>Doğum yerim</x:String>
+                                    <x:String>En sevdiğim film</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Label Text="Güvenlik Sorusu Cevabı" TextColor="Black" Margin="10,5,0,0"/>
+                            <controls:CustomEntry x:Name="TxtCevap" ReturnType="Done" Placeholder="Güvenlik Sorusu Cevabı"/>
+
+                            <Button x:Name="BtnKaydol1" Text="Kaydol" Clicked="btnKaydol1_Clicked"/>
+                            <Button x:Name="BtnVazgec" Text="Vazgeç" Clicked="btnVazgec_Clicked" Margin="0,5,0,10"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+            <ContentView x:Name="ViewSifremiUnuttum" VerticalOptions="Center" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" WidthRequest="300" IsVisible="false">
+                <Frame BackgroundColor="White" CornerRadius="20" WidthRequest="300" Grid.ColumnSpan="3" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Şifremi Unuttum" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title"/>
+                        <Label x:Name="LblSoru" Text="Soru" TextColor="Black" FontSize="Subtitle"/>
+                        <controls:CustomEntry x:Name="TxtCevap1" Placeholder="Cevabınız"/>
+                        <Label x:Name="LblSonuc" TextColor="Black" FontSize="Subtitle"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="BtnTamam" Text="Cevapla" Clicked="btnTamam_Clicked"/>
+                            <Button x:Name="BtnIptal" Text="İptal" Clicked="btnIptal_Clicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

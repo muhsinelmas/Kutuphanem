@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:customcontrols="clr-namespace:Kutuphanem.CustomControls" x:DataType="customcontrols:CustomEntry"
+             x:Class="Kutuphanem.Views.Hesap"
+             BackgroundColor="White"
+             Padding="10,0"
+             Title="Hesabım">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="Margin" Value="5,0,5,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="LblId" IsVisible="false"/>
+            <ScrollView HorizontalScrollBarVisibility="Never">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*">
+
+                    <Entry x:Name="TxtAd" ReturnType="Next" Placeholder="Adınız" Grid.ColumnSpan="4" Grid.Column="0" ClearButtonVisibility="WhileEditing">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                    <Entry x:Name="TxtSoyad" ReturnType="Next" Placeholder="Soyadınız" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" ClearButtonVisibility="WhileEditing">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                    <Entry x:Name="TxtKullaniciAdi" ReturnType="Next" Placeholder="Kullanıcı adı" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" ClearButtonVisibility="WhileEditing"></Entry>
+                    <Entry x:Name="TxtSifre" ReturnType="Done" Placeholder="Şifre" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" ClearButtonVisibility="WhileEditing"/>
+                    <Picker x:Name="PkrGSorusu" Grid.Row="4" Grid.ColumnSpan="4" Grid.Column="0">
+                        <Picker.Items>
+                            <x:String>En sevdiğim kitap</x:String>
+                            <x:String>En sevdiğim öğretmenim</x:String>
+                            <x:String>İlk okulumun adı</x:String>
+                            <x:String>Doğum yerim</x:String>
+                            <x:String>En sevdiğim film</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Entry x:Name="TxtCevap" ReturnType="Done" Placeholder="Güvenlik Sorusu Cevabı" Grid.Row="5" Grid.ColumnSpan="4" Grid.Column="0" />
+
+                    <Button x:Name="BtnGuncelle" Text="Düzenle" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Clicked="btnGuncelle_Clicked"/>
+                    <Button x:Name="BtnSil" Text="Hesabı Sil" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Clicked="btnSil_Clicked"/>
+                    <Button x:Name="BtnYedekAl" Text="Yedek Al" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Clicked="btnYedekAl_Clicked"/>
+                    <Button x:Name="BtnCikis" Text="Çıkış Yap" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Clicked="btnCikis_Clicked"/>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

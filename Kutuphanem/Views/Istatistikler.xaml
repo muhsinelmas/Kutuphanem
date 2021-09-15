@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microchart="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Kutuphanem.Views.Istatistikler"
+             BackgroundColor="White"
+             Title="İstatistikler">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="LblKullaniciAdi" IsVisible="False"/>
+            <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                <Grid Margin="10" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackLayout Grid.Row="0" Orientation="Horizontal">
+                        <Label Text="Grafik Türü: " VerticalOptions="Center"/>
+                        <Picker x:Name="PkrTur" HorizontalOptions="FillAndExpand" SelectedIndexChanged="pkrTur_SelectedIndexChanged" FontSize="20">
+                            <Picker.Items>
+                                <x:String>Sütun Grafik</x:String>
+                                <x:String>Çizgi Grafik</x:String>
+                                <x:String>Nokta Grafik</x:String>
+                                <x:String>Dairesel Grafik</x:String>
+                                <x:String>Pasta Grafik</x:String>
+                                <x:String>Radar Grafik</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                    <Frame CornerRadius="10" BackgroundColor="Aquamarine" Grid.Row="1">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Toplam Kitap Sayısı:" />
+                                <Label x:Name="LblToplamKitap" Text="127" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <microchart:ChartView x:Name="GrafikKitap" VerticalOptions="FillAndExpand" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="10" BackgroundColor="Aquamarine" Grid.Row="2">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Toplam Sayfa Sayısı:" />
+                                <Label x:Name="LblToplamSayfa" Text="127" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <microchart:ChartView x:Name="GrafikSayfa" VerticalOptions="FillAndExpand" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="10" BackgroundColor="Aquamarine" Grid.Row="3">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Toplam Kategori Sayısı:" />
+                                <Label x:Name="LblToplamTur" Text="127" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <microchart:ChartView x:Name="GrafikTur" VerticalOptions="FillAndExpand" HeightRequest="250"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+
+            <StackLayout Spacing="0" Margin="0" Padding="0" VerticalOptions="End">
+                <Label x:Name="LblOneri" Text="Daha çok kitap okumalısın." FontSize="10" TextColor="Red" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

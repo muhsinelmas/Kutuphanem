@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="Kutuphanem.Views.Listele"
+             BackgroundColor="#43aa8b"
+             Title="Kitaplarım">
+
+    <ContentPage.ToolbarItems>
+        <OnPlatform x:TypeArguments="ToolbarItem">
+            <On Platform="iOS">
+                <ToolbarItem Text="İstatistikler" Order="Primary" Priority="2" Clicked="Istatistikler"></ToolbarItem>
+            </On>
+            <On Platform="Android">
+                <ToolbarItem Text="İstatistikler" Order="Secondary" Priority="2" Clicked="Istatistikler"></ToolbarItem>
+            </On>
+        </OnPlatform>
+        <OnPlatform x:TypeArguments="ToolbarItem">
+            <On Platform="iOS">
+                <ToolbarItem Text="Yenile" IconImageSource="refresh" Clicked="Yenile" Order="Primary" Priority="0"></ToolbarItem>
+            </On>
+            <On Platform="Android">
+                <ToolbarItem Text="Yenile" IconImageSource="drawable/refresh.png" Clicked="Yenile" Order="Primary" Priority="0"></ToolbarItem>
+            </On>
+        </OnPlatform>
+        <ToolbarItem Text="Kitap Ekle" Clicked="Eklediginde" Order="Primary" Priority="1"></ToolbarItem>
+        <ToolbarItem x:Name="BtnHesap" Order="Secondary" Priority="3" Clicked="CikisYap_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Label x:Name="LblId" IsVisible="false"/>
+                <Label x:Name="LblKullaniciAdi" IsVisible="false"/>
+                <xct:Expander x:Name="Expndr" Margin="0" Padding="0" Tapped="Expndr_Tapped">
+                    <xct:Expander.Header>
+                        <Grid Padding="10,0" RowDefinitions="Auto" ColumnDefinitions="100, * ,Auto">
+
+                            <Picker x:Name="PkrAra" SelectedIndexChanged="pkrAra_SelectedIndexChanged">
+                                <Picker.Items>
+                                    <x:String>Ad</x:String>
+                                    <x:String>Yazar</x:String>
+                                    <x:String>Yayınevi</x:String>
+                                    <x:String>Tür</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <Entry x:Name="TxtAra" Grid.Column="1" TextChanged="txtAra_TextChanged" Placeholder="Ara" ClearButtonVisibility="WhileEditing" ReturnType="Search" Completed="txtAra_Completed">
+                                <Entry.Keyboard>
+                                    <Keyboard x:FactoryMethod="Create">
+                                        <x:Arguments>
+                                            <KeyboardFlags>Suggestions,CapitalizeSentence</KeyboardFlags>
+                                        </x:Arguments>
+                                    </Keyboard>
+                                </Entry.Keyboard>
+                            </Entry>
+                            <Image x:Name="ImgGenislet" Source="genislet" WidthRequest="24" HeightRequest="24" Grid.Column="2" VerticalOptions="EndAndExpand"/>
+                        </Grid>
+                    </xct:Expander.Header>
+
+                    <StackLayout Orientation="Horizontal" Padding="10,0">
+                        <Picker x:Name="PkrFiltre" WidthRequest="100" SelectedIndexChanged="pkrFiltre_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>Tümü</x:String>
+                                <x:String>Okundu</x:String>
+                                <x:String>Okunmadı</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Picker x:Name="PkrTurFiltre" Title="Kategori Seç" HorizontalOptions="FillAndExpand" SelectedIndexChanged="pkrTurFiltre_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>Tümü</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </xct:Expander>
+                <ScrollView>
+                    <StackLayout x:Name="Bos" Spacing="10" Padding="10,5">
+                        <Frame x:Name="Kutu1" Opacity="0.15" CornerRadius="10" BorderColor="Silver" IsClippedToBounds="True">
+                            <Frame.HasShadow>
+                                <OnPlatform x:TypeArguments="x:Boolean">
+                                    <On Platform="iOS" Value="False"/>
+                                    <On Platform="Android" Value="True"/>
+                                </OnPlatform>
+                            </Frame.HasShadow>
+                            <StackLayout>
+                                <Grid RowDefinitions="20,20,20,20" ColumnDefinitions="*,3*">
+                                    
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="0" Grid.Column="0" />
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="0" Grid.Column="1" />
+
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="1" Grid.Column="0" />
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="1" Grid.Column="1" />
+
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="2" Grid.Column="0" />
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="2" Grid.Column="1" />
+
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="3" Grid.Column="0" />
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="3" Grid.Column="1" />
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame x:Name="Kutu2" Opacity="0.15" CornerRadius="10" BorderColor="Silver" IsClippedToBounds="True">
+                            <Frame.HasShadow>
+                                <OnPlatform x:TypeArguments="x:Boolean">
+                                    <On Platform="iOS" Value="False"/>
+                                    <On Platform="Android" Value="True"/>
+                                </OnPlatform>
+                            </Frame.HasShadow>
+                            <StackLayout>
+                                <Grid RowDefinitions="20,20,20,20" ColumnDefinitions="*,3*">
+                                   
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="0" Grid.Column="0"></BoxView>
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="0" Grid.Column="1"></BoxView>
+
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="1" Grid.Column="0"></BoxView>
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="1" Grid.Column="1"></BoxView>
+
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="2" Grid.Column="0"></BoxView>
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="2" Grid.Column="1"></BoxView>
+
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="3" Grid.Column="0"></BoxView>
+                                    <BoxView BackgroundColor="Silver" HeightRequest="20" CornerRadius="5" Grid.Row="3" Grid.Column="1"></BoxView>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Label x:Name="LblUyari" TextColor="Black" Text="Kütüphanen boş" FontSize="25" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Margin="0">
+                    <ListView x:Name="LstKitap" ItemsSource="{Binding .}" SeparatorVisibility="None" HasUnevenRows="True" SelectionMode="None" IsPullToRefreshEnabled="True" CachingStrategy="RecycleElementAndDataTemplate" VerticalScrollBarVisibility="Never" ItemTapped="lstKitap_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Spacing="10" Padding="10,5">
+                                        <Frame CornerRadius="10" BorderColor="Silver" IsClippedToBounds="True">
+                                            <!--<Frame.Background>
+                                                <LinearGradientBrush EndPoint="1,1">
+                                                    <GradientStop Color="#f8f9fa" Offset="0.0"/>
+                                                    <GradientStop Color="#dee2e6" Offset="0.5"/>
+                                                    <GradientStop Color="#ced4da" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Frame.Background>-->
+                                            <Frame.HasShadow>
+                                                <OnPlatform x:TypeArguments="x:Boolean">
+                                                    <On Platform="iOS" Value="False"/>
+                                                    <On Platform="Android" Value="True"/>
+                                                </OnPlatform>
+                                            </Frame.HasShadow>
+                                            <StackLayout>
+                                                <Label TextColor="Black" Font="17,Bold" Text="{Binding Ad}"></Label>
+                                                <BoxView BackgroundColor="Silver" HeightRequest="1"></BoxView>
+                                                <Label Text="{Binding Yazar}"></Label>
+                                                <BoxView BackgroundColor="Silver" HeightRequest="1"></BoxView>
+                                                <Label Text="{Binding YayinEvi}"></Label>
+                                                <BoxView BackgroundColor="Silver" HeightRequest="1"></BoxView>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Tur}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+                                                    <Label Text="Okundu" IsVisible="{Binding Okundu}" HorizontalOptions="End" VerticalOptions="Center"></Label>
+                                                    <CheckBox IsEnabled="False" IsChecked="{Binding Okundu}" IsVisible="{Binding Okundu}" HorizontalOptions="End"></CheckBox>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="Sil" Clicked="Sil" IsDestructive="True" CommandParameter="{Binding Id}">
+                                            <MenuItem.IconImageSource>
+                                                <OnPlatform x:TypeArguments="ImageSource">
+                                                    <On Platform="iOS" Value="delete"/>
+                                                    <On Platform="Android" Value="drawable/delete"/>
+                                                </OnPlatform>
+                                            </MenuItem.IconImageSource>
+                                        </MenuItem>
+                                        <MenuItem Text="Düzenle" Clicked="Duzenle" CommandParameter="{Binding Id}">
+                                            <MenuItem.IconImageSource>
+                                                <OnPlatform x:TypeArguments="ImageSource">
+                                                    <On Platform="iOS" Value="edit"/>
+                                                    <On Platform="Android" Value="drawable/edit"/>
+                                                </OnPlatform>
+                                            </MenuItem.IconImageSource>
+                                        </MenuItem>
+                                    </ViewCell.ContextActions>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kutuphanem.MainPage"
+             BackgroundColor="#43aa8b"
+             Title="Kitap Ekle">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10">
+                <Label x:Name="LblKullaniciAdi" IsVisible="false"/>
+                <Entry x:Name="TxtAd" Placeholder="Kitap adı" ClearButtonVisibility="WhileEditing" ReturnType="Next">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
+                <Entry x:Name="TxtYazar" Placeholder="Yazar adı" ClearButtonVisibility="WhileEditing" ReturnType="Next">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
+                <Entry x:Name="TxtYayinevi" Placeholder="Yayınevi" ClearButtonVisibility="WhileEditing" ReturnType="Next">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
+                <Entry x:Name="TxtTur" Placeholder="Kitap türü" ClearButtonVisibility="WhileEditing" ReturnType="Next">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>Suggestions,CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
+                <Entry x:Name="TxtSayfa" Placeholder="Sayfa sayısı" Keyboard="Numeric" ClearButtonVisibility="WhileEditing" ReturnType="Next"></Entry>
+                <StackLayout>
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0.5"/>
+                        </OnPlatform>
+                    </StackLayout.Padding>
+                    <StackLayout.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Silver"/>
+                        </OnPlatform>
+                    </StackLayout.BackgroundColor>
+                    <Editor x:Name="TxtNot" Placeholder="Not" AutoSize="TextChanges">
+                        <Editor.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>Suggestions,CapitalizeSentence</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Editor.Keyboard>
+                    </Editor>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox x:Name="Okundu" CheckedChanged="Okundu_Toggled"/>
+                    <Label x:Name="LblOkundu" Text="Okunmadı" FontSize="15" VerticalOptions="CenterAndExpand"/>
+                    <Label x:Name="LblVar" Text="Kütüphanede Yok" FontSize="15" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" IsVisible="False"/>
+                    <CheckBox x:Name="ChkVar" CheckedChanged="ChkVar_CheckedChanged" IsVisible="False"/>
+                </StackLayout>
+                <DatePicker x:Name="Tarih"/>
+                
+                <Button Text="Kaydet" Clicked="OnClicked" CornerRadius="15" BackgroundColor="#e9ecef" BorderWidth="1" BorderColor="Silver" HorizontalOptions="Center" WidthRequest="200"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

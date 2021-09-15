@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="icon">@android:color/black</color>
+    <color name="colorPrimary">#43aa8b</color>
+    <color name="colorPrimaryDark">#43aa8b</color>
+    <color name="colorAccent">#6c757d</color>
+</resources>
